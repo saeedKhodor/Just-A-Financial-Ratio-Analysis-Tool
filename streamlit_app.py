@@ -30,11 +30,11 @@ if st.button("Analyze Ratios"):
         return_on_assets = financials.loc["Net Income"][0] / balance_sheet.loc["Total Assets"][0]
 
         # Liquidity Ratios
-        current_ratio = balance_sheet.loc["Current Assets"][0] / balance_sheet.loc["Total Current Liabilities"][0]
+        current_ratio = balance_sheet.loc["Current Assets"][0] / balance_sheet.loc["Current Liabilities"][0]
         quick_ratio = (balance_sheet.loc["Current Assets"][0] - balance_sheet.loc["Inventory"][0]) / balance_sheet.loc["Total Current Liabilities"][0]
 
         # Leverage Ratios
-        debt_to_equity = balance_sheet.loc["Total Liab"][0] / balance_sheet.loc["Total Stockholder Equity"][0]
+        debt_to_equity = balance_sheet.loc["Total Liab"][0] / balance_sheet.loc["Stockholder Equity"][0]
         interest_coverage = financials.loc["EBIT"][0] / financials.loc["Interest Expense"][0]
 
         # Efficiency Ratios
