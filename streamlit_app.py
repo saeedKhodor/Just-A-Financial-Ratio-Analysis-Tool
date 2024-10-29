@@ -31,7 +31,7 @@ if st.button("Analyze Ratios"):
 
         # Liquidity Ratios
         current_ratio = balance_sheet.loc["Current Assets"][0] / balance_sheet.loc["Current Liabilities"][0]
-        quick_ratio = (balance_sheet.loc["Current Assets"][0] - balance_sheet.loc["Inventory"][0]) / balance_sheet.loc["Total Current Liabilities"][0]
+        quick_ratio = (balance_sheet.loc["Current Assets"][0] - balance_sheet.loc["Inventory"][0]) / balance_sheet.loc["Current Liabilities"][0]
 
         # Leverage Ratios
         debt_to_equity = balance_sheet.loc["Total Liab"][0] / balance_sheet.loc["Stockholder Equity"][0]
