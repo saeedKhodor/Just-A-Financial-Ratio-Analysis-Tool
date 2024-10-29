@@ -31,10 +31,12 @@ if st.button("Analyze Ratios"):
 
         # Liquidity Ratios
         current_ratio = balance_sheet.loc["Current Assets"][0] / balance_sheet.loc["Current Liabilities"][0]
+        
+        # Quick Ratio (excluding Inventory from Current Assets)
         quick_ratio = (balance_sheet.loc["Current Assets"][0] - balance_sheet.loc["Inventory"][0]) / balance_sheet.loc["Current Liabilities"][0]
 
         # Leverage Ratios
-        debt_to_equity = balance_sheet.loc["Total Liab"][0] / balance_sheet.loc["Stockholder Equity"][0]
+        debt_to_equity = balance_sheet.loc["Total Debt"][0] / balance_sheet.loc["Stockholders Equity"][0]
         interest_coverage = financials.loc["EBIT"][0] / financials.loc["Interest Expense"][0]
 
         # Efficiency Ratios
@@ -59,5 +61,7 @@ if st.button("Analyze Ratios"):
         st.write(f"Inventory Turnover: {inventory_turnover:.2f}")
         st.write(f"Asset Turnover: {asset_turnover:.2f}")
 
+    except KeyError as e:
+        st.error(f"Data missing for calculation: {e}")
     except Exception as e:
-        st.write("Error in calculating ratios:", e)
+        st.error(f"An error occurred: {e}")
